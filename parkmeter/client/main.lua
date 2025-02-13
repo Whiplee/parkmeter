@@ -77,22 +77,22 @@ end
 SmallParkOpt = {
     {
         name = "parkmeter",
-        label = "Prohledat Automat",
+        label = "Search",
         icon = "fas fa-coins",
         distance = 2,
         onSelect = function(entity)
             local entityId = entity.entity  
             if usedEntities[entityId] then
-                notify("V tomto Automatu nic není!")
+                notify("In this stand is nothing!")
                 return
             end
 
-            if progressCircle(4000, "Hledáte peníze...") then 
+            if progressCircle(4000, "Searching Money...") then 
                 TriggerServerEvent("parkmeter:dostatitem", cache.serverId, Config.SmallParkReward.item, Config.SmallParkReward.amount)
                 usedEntities[entityId] = true
-                notify("Našel jsi Peníze!")
+                notify("Money Found!")
             else 
-                notify("Prohledávní Zrušeno!")
+                notify("Searching canceled!")
             end
         end
     }
@@ -100,23 +100,23 @@ SmallParkOpt = {
 
 BigParkOpt = {
     {
-        name = "parkmeter:velkystojan",
-        label = "Prohledat Automat",
+        name = "parkmeter",
+        label = "Search",
         icon = "fas fa-coins",
         distance = 2,
         onSelect = function(entity)
             local entityId = entity.entity  
             if usedEntities[entityId] then
-                notify("Tento Automat jste již prohledali!")
+                notify("In this stand is nothing!")
                 return
             end
 
-            if progressCircle(5000, "Hledáte peníze...") then 
+            if progressCircle(5000, "Searching Money...") then 
                 TriggerServerEvent("parkmeter:dostatitem", cache.serverId, Config.BigParkReward.item, Config.BigParkReward.amount)
                 usedEntities[entityId] = true
-                notify("Našel jsi Peníze!")
+                notify("Money Found!")
             else 
-                notify("Prohledávání zrušeno!")
+                notify("Searching canceled!")
             end
         end
     }
